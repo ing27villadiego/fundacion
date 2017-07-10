@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'iconos';
+    src:  url('../fonts/icomoon.eot?v8cs4q');
+    src:  url('../fonts/icomoon.eot?v8cs4q#iefix') format('embedded-opentype'),
+            url('../fonts/icomoon.ttf?v8cs4q') format('truetype'),
+            url('../fonts/icomoon.woff?v8cs4q') format('woff'),
+            url('../fonts/icomoon.svg?v8cs4q#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Variables ==========================
+azul = #22BCE0
+gris_oscuro = #444
+naranja = #DD4F24
+
+
+primary = #907dda
+accent = #e5e4ea
+font-light = #e7e6f1
+font-dark = #333
+
+
+body
+    background E8E8E8
+    color gris_oscuro
+    font-family Arial
+    font-size 16px
+
+    .sections
+        padding 1em
+
+        .section
+            background white
+            border-radius 0 0 1em 1em
+            box-shadow 2px 2px 10px rgba(black 0.5)
+
+        .container
+            padding 1em
+
+
+
+header
+    background gris_oscuro
+    box-shadow 0 5px 0 rgba(0,0,0,0.2)
+    color white
+    overflow hidden
+    padding 0.5em
+    position relative
+    z-index 1
+
+    .logo
+        border-right 1px solid azul
+        width 85px
+
+        img
+            border-radius 50%
+            width 60px
+
+
+    .titular
+        margin 0 80px 0 90px
+
+        .filtro
+            color azul
+            font-weight  bold
+            font-style italic
+            text-decoration none
+
+        .titulo
+            font-size 20px
+            font-family 'Quintessential', cursive
+            font-weight normal
+            margin 0
+            padding 0
+
+    .usuario
+        position absolute
+        right 10px
+        top 0
+
+
+        .login
+            background azul
+            border-radius 3px
+            display inline-block
+            text-decoration none
+            padding-left 0.8em
+            margin 2em 1.2em 0 0
+
+
+            &:before
+                content: "\e904"
+                display inline-block
+                font-family "iconos"
+                padding 0.2em 0.5em 0 0
+
+
+
+
+
+.content_welcome
+    padding 1em
+
+    .welcome
+        background white
+
+        .lema
+            font-size 16px
+            font-family 'Quintessential', cursive
+            text-align center
+
+        .logo_welcome
+            text-align center
+
+            img
+                width 300px
+
+        .title_welcome
+            font-family 'Quintessential', cursive
+            text-align center
+
+        .redes
+            padding 0
+            text-align center
+
+            a
+                margin 0
+                padding 0
+
+                i
+                    margin 0
+                    padding 0
+                    width 30px
+
+
+
+
+.left
+    float left
+
+
+.right
+    float right
