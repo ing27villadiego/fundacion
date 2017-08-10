@@ -18,7 +18,7 @@ class CreateCitiesTable extends Migration
             $table->string('name', 150);
             $table->string('letter', 2);
             $table->string('slug', 160);
-            $table->boolean('state');
+            $table->integer('state');
             $table->timestamps();
         });
     }

@@ -1,4 +1,3 @@
-$(document).ready(function() {
-    $('#example').dataTable();
-    responsive: true
-} );
+$(document).ready(function(){
+    $('#example').datatable();
+});

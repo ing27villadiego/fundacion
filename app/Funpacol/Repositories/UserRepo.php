@@ -10,7 +10,6 @@
 
 use App\Funpacol\Entities\User;
 
-use Sentinel;
 
 class UserRepo extends BaseRepo {
 
@@ -20,14 +19,12 @@ class UserRepo extends BaseRepo {
     }
 
 
-    public function storeLogin($request)
+    public function newUser()
     {
-        return Sentinel::registerAndActivate($request->all());
-    }
+        $user = new User();
+        $user->state = 1;
+        return $user;
 
-    public function login($request)
-    {
-        return Sentinel::authenticate($request->all());
     }
 
 }

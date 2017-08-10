@@ -1,63 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content-box-large">
-    <div class="panel-heading">
-        <div class="panel-title">LISTA DE PROMOTORES</div>
-    </div>
-    <div class="panel-body content-box-header panel-heading">
 
-        <div class="btn btn-success">
-            <i class="fa fa-plus glyphicon glyphicon-plus-sign"></i> <a href="{{route('create_promoter')}}" style="color: white; text-decoration: none">Agregar nuevo</a>
-        </div>
+    <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="blue">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h5 class="title">LISTA PROMOTORES DE  ( <span> {{ Auth::user()->city->name }}</span> )</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content table-responsive">
+                            <table class="table" id="example">
+                                <thead class="text-info">
+                                <th>Nombres </th>
+                                <th>Apellido</th>
+                                <th>Documento</th>
+                                <th>Celular</th>
+                                <th>Direccion</th>
+                                <th>estado </th>
+                                <th>Accion</th>
+                                </thead>
+                                <tbody>
+                                @foreach ($promoters as $promoter )
+                                    <tr >
+                                        <td>{{ $promoter->first_name}}</td>
+                                        <td>{{ $promoter->last_name }}</td>
+                                        <td>{{ $promoter->document}}</td>
+                                        <td>{{ $promoter->cell_phone}}</td>
+                                        <td>{{ $promoter->address}}</td>
+                                        @if ($promoter->state  == 1)
+                                            <td class="text-primary">Activo</td>
+                                        @elseif ($promoter->state == 2)
+                                            <td class="text-danger">Inactivo</td>
+                                        @endif
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="{{route('promoter_show', $promoter->id)}}" role="button">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
 
-    </div>
-    <div class="content-box-large box-with-header">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel-body">
-                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-lesss display responsive no-wrap" id="example">
-                        <thead>
-                        <tr>
-                            <th>Nombres </th>
-                            <th>Apellidos</th>
-                            <th>estado </th>
-                            <th>Accion</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($promoters as $promoter)
-                            <tr>
-                                <td>{{ $promoter->first_name }}</td>
-                                <td>{{ $promoter->last_name }}</td>
-                                <td>
-                                    @if ($promoter->state  == 1)
-                                        Activo
-                                    @elseif ($promoter->state == 2)
-                                        Inactivo
-                                    @else
-                                        Eliminado
-                                    @endif
-                                </td>
-                                <td>
-                                    <a class="btn btn-info btn-sm" href="#" role="button">
-                                        <i class="glyphicon glyphicon-eye-open">
-                                        </i>
-                                    </a>
-                                    <a class="btn btn-success btn-sm" href="#" role="button">
-                                        <i class="glyphicon glyphicon-pencil">
-                                        </i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
+
+@stop
+
+@section('js')
+
+    <script>
+        $(document).ready(function(){
+            $('#example').DataTable();
+        });
+    </script>
 
 @stop

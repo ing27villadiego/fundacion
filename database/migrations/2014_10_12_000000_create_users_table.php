@@ -17,9 +17,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('password');
             $table->integer('city_id')->unsigned();
-            $table->boolean('state');
+            $table->integer('state');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();

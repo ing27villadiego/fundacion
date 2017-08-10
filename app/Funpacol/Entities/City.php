@@ -24,4 +24,29 @@ class City extends Model
         return $this->hasMany(Promoter::class);
     }
 
+    public function advisers()
+    {
+        return $this->hasMany(Adviser::class);
+    }
+
+    public function postmens()
+    {
+        return $this->hasMany(Postmen::class);
+    }
+
+    public function datafamilies()
+    {
+        return $this->hasMany(Datafamily::class);
+    }
+
+    public function godfathers()
+    {
+        return $this->hasMany(Godfather::class);
+    }
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
 }

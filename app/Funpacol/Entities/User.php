@@ -5,9 +5,13 @@ namespace App\Funpacol\Entities;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use Notifiable;
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'first_name',  'last_name','password','city_id', 'state'
     ];
 
     /**
@@ -26,4 +30,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+    public function setPasswordAttribute($value)
+    {
+        if ( ! empty($value))
+        {
+            $this->attributes['password'] = bcrypt($value);
+        }
+    }
+
+
+
 }

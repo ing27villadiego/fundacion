@@ -21,11 +21,9 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-4">
-                            {!! Form::label('first_name', 'Nombres',['class'=> 'control-label']) !!}
                             {!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder'=>'Nombres del Promotor...']) !!}
                         </div>
                         <div class="col-lg-4">
-                            {!! Form::label('last_name', 'Apellidos',['class'=> 'control-label']) !!}
                             {!! Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Apellidos del Promotor...']) !!}
                         </div>
                     </div>
@@ -34,11 +32,20 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-4">
-                            {!! Form::label('address', 'Direccion',['class'=> 'control-label']) !!}
+                            {!! Form::select('document_id',$documents, null, ['class'=>'form-control', 'placeholder'=>'Seleccione un tipo doc...']) !!}
+                        </div>
+                        <div class="col-lg-4">
+                            {!! Form::text('document', null, ['class'=>'form-control', 'placeholder'=>'Documento del Promotor...']) !!}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-4">
                             {!! Form::text('address', null, ['class'=>'form-control', 'placeholder'=>'Direccion del Promotor...']) !!}
                         </div>
                         <div class="col-lg-4">
-                            {!! Form::label('cell_phone', 'Celular',['class'=> 'control-label']) !!}
                             {!! Form::text('cell_phone', null, ['class'=>'form-control', 'placeholder'=>'Celular del Promotor...']) !!}
                         </div>
                     </div>
@@ -47,11 +54,10 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-4">
-                            {!! Form::label('document', 'Documento',['class'=> 'control-label']) !!}
-                            {!! Form::text('document', null, ['class'=>'form-control', 'placeholder'=>'Documento del Promotor...']) !!}
+                            {{ Form::label('date_birthday', 'Fecha de cumpleaño', ['class' => 'control-label ']) }}
+                            {!! Form::date('date_birthday', null, ['class'=>'form-control', 'placeholder'=>'Fecha de Cumpleaños...']) !!}
                         </div>
                         <div class="col-lg-4">
-                            {!! Form::label('email', 'Correo', ['class'=>'control-label']) !!}
                             {!! Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'example@gmail.com...']) !!}
                         </div>
                     </div>

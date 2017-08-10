@@ -3,52 +3,47 @@
 namespace App\Http\Controllers;
 
 
-use App\Funpacol\Managers\PromoterManager;
-use App\Funpacol\Repositories\CityRepo;
-use App\Funpacol\Repositories\DocumentRepo;
-use App\Funpacol\Repositories\PromoterRepo;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
+use App\Funpacol\Repositories\EmployeeRepo;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PromoterController extends Controller
 {
 
-    protected $promoterRepo;
-    protected $documentRepo;
-    protected $cityRepo;
 
-    public function __construct(PromoterRepo $promoterRepo,
-                                DocumentRepo $documentRepo,
-                                CityRepo $cityRepo)
+    protected $employeeRepo;
+
+    public function __construct(EmployeeRepo $employeeRepo)
     {
-        $this->promoterRepo = $promoterRepo;
-        $this->documentRepo = $documentRepo;
-        $this->cityRepo = $cityRepo;
+
+        $this->employeeRepo = $employeeRepo;
+    }
+
+    public function prueba()
+    {
+        $promoters = $this->employeeRepo->All();
+
+        return response()->json([$promoters], 200);
     }
 
     public function index()
     {
-        $promoters = $this->promoterRepo->All();
-        return view('promoters.index', compact('promoters'));
+        $city = Auth::user()->city_id;
+        $promoters = $this->employeeRepo->All()->where('position_id', '=', 1)->where('city_id', '=', $city);
+
+        return view('promoters/index', compact('promoters'));
     }
 
-    public function create()
-    {
-        $documents = $this->documentRepo->All()->pluck('name','id');
-        $cities = $this->cityRepo->All()->pluck('name', 'id');
-        return view('promoters.create', compact('documents', 'cities'));
-    }
 
-    public function promoterCreate()
+    public function promoterShow($id)
     {
+        $city = Auth::user()->city_id;
+        $godfathers = DB::table('godfathers')->where('promoter_id', '=', $id)
+            ->where('city_id', '=', $city)
+            ->get();
+        $promoter = $this->employeeRepo->edit($id);
 
-        $promoter = $this->promoterRepo->newPromoter();
-        $manager = new PromoterManager($promoter, Input::all());
-        if ($manager->save())
-        {
-            return Redirect::route('promoters');
-        }
-        return Redirect::back()->withInput()->withErrors($manager->getErrors());
+        return view('promoters/show', compact('godfathers', 'promoter'));
     }
 
 }

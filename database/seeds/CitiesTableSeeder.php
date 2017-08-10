@@ -14,9 +14,9 @@ class CitiesTableSeeder extends Seeder
     {
         City::create([
             'id' => 1,
-            'name' => 'Bogota',
-            'letter' => 'T',
-            'slug'  => 'bogota',
+            'name' => 'Guajira',
+            'letter' => 'g',
+            'slug'  => 'guajira',
             'state' => 1,
         ]);
         City::create([
@@ -28,6 +28,13 @@ class CitiesTableSeeder extends Seeder
         ]);
         City::create([
             'id' => 3,
+            'name' => 'Bogota',
+            'letter' => 'B',
+            'slug'  => 'bogota',
+            'state' => 1,
+        ]);
+        City::create([
+            'id' => 4,
             'name' => 'Medellin',
             'letter' => 'C',
             'slug'  => 'medellin',

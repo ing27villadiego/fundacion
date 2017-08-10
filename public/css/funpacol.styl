@@ -21,11 +21,14 @@ font-light = #e7e6f1
 font-dark = #333
 
 
+
+
 body
     background E8E8E8
     color gris_oscuro
     font-family Arial
     font-size 16px
+    margin-bottom 150px
 
     .sections
         padding 1em
@@ -37,6 +40,12 @@ body
 
         .container
             padding 1em
+
+        .register
+            padding 1em
+
+
+
 
 
 
@@ -59,7 +68,7 @@ header
 
 
     .titular
-        margin 0 80px 0 90px
+        margin 0 120px 0 100px
 
         .filtro
             color azul
@@ -83,19 +92,29 @@ header
         .login
             background azul
             border-radius 3px
+            color white
             display inline-block
             text-decoration none
-            padding-left 0.8em
-            margin 2em 1.2em 0 0
+            padding-left 0.4em
+            padding-right 0.4em
+            margin 1em 2em 0 0
 
-
+            a
+                color white
+                text-decoration none
             &:before
                 content: "\e904"
                 display inline-block
                 font-family "iconos"
                 padding 0.2em 0.5em 0 0
 
+        .userName
+            margin 1em
 
+            a
+                color azul
+                text-decoration none
+                z-index 100
 
 
 
@@ -135,6 +154,12 @@ header
 
 
 
+
+footer
+
+    .funpacol
+        background red
+        max-width 100%
 
 .left
     float left

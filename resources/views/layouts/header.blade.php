@@ -15,10 +15,10 @@
     </div>
     <div class="usuario">
         @if (Auth::guest())
-            <li class="login"><a href="{{ route('sign_in') }}">Login</a></li>
+            <ul class="login"><a href="{{ route('sign_in') }}">Login</a></ul>
         @else
 
-            <li class="dropdown">
+            <ul class="dropdown userName">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
@@ -36,8 +36,7 @@
                         </form>
                     </li>
                 </ul>
-            </li>
-
+            </ul>
 
         @endif
     </div>

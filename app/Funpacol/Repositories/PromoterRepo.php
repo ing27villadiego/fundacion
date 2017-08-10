@@ -10,6 +10,8 @@ namespace App\Funpacol\Repositories;
 
 
 use App\Funpacol\Entities\Promoter;
+use Illuminate\Support\Facades\Auth;
+
 
 class PromoterRepo extends BaseRepo {
 
@@ -20,8 +22,11 @@ class PromoterRepo extends BaseRepo {
 
     public function newPromoter()
     {
+        $city = Auth::user()->city_id;
         $promoter = new Promoter();
+        $promoter->city_id = $city;
         $promoter->state = 1;
+
         return $promoter;
     }
 

@@ -18,7 +18,7 @@ class CreateZonesTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->string('name');
             $table->string('slug');
-            $table->boolean('state');
+            $table->integer('state');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
         });

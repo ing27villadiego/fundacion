@@ -16,10 +16,12 @@ class PromoterManager extends BaseManager {
         $rules = [
             'first_name' => 'required|max:150',
             'last_name' => 'required|max:150',
-            'document' => 'max:15',
-            'address'=> 'max:15',
+            'document_id' => 'required',
+            'document' => 'required|max:15|unique:promoters,document',
+            'address'=> 'max:50',
             'cell_phone'=> 'max:15',
-            'email'=> 'max:30'
+            'email'=> 'max:30|unique:promoters,email',
+            'date_birthday' => ''
 
         ];
         return $rules;

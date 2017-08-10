@@ -16,8 +16,10 @@ class UsersTableSeeder extends Seeder
             'id' => 1,
             'name' => 'jeaffer villadiego',
             'email' => 'jeyferv@gmail.com',
+            'first_name' => 'jeaffer',
+            'last_name' => 'villadiego',
             'password' => bcrypt('123456'),
-            'city_id' => 1,
+            'city_id' => 2,
             'state' => 1,
         ]);
     }

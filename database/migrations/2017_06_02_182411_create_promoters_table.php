@@ -15,13 +15,15 @@ class CreatePromotersTable extends Migration
     {
         Schema::create('promoters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('document');
-            $table->string('address');
-            $table->string('cell_phone');
-            $table->string('email');
+            $table->integer('city_id')->unsigned();
+            $table->integer('employee_id')->unsigned();
+            $table->integer('position_id')->unsigned();
             $table->integer('state');
+
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

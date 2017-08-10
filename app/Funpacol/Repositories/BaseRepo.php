@@ -8,6 +8,8 @@
  */
 
 use App\Funpacol\Entities\City;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 abstract class BaseRepo {
@@ -25,7 +27,7 @@ abstract class BaseRepo {
     public function cities()
     {
 
-        return City::orderBy('name', 'DESC')->pluck('name','id');
+        return City::orderBy('name', 'asc')->pluck('name','id');
 
     }
 
@@ -42,6 +44,40 @@ abstract class BaseRepo {
     public function update($id)
     {
         return $this->model->find($id);
+    }
+
+
+    public function AllTodo()
+    {
+        $city = Auth::user()->city_id;
+
+        return  $this->model->select('id', DB::raw('CONCAT(first_name," ",last_name) as full_name'))
+            ->where('city_id', '=', $city)
+            ->orderBy('full_name')
+            ->pluck('full_name', 'id');
+
+    }
+
+    public function AllAdviser()
+    {
+        $city = Auth::user()->city_id;
+
+        return  $this->model->select('id', DB::raw('CONCAT(first_name," ",last_name) as full_name'))
+            ->where('city_id', '=', $city)
+            ->where('position_id', '=', 2)
+            ->orderBy('full_name')
+            ->pluck('full_name', 'id');
+    }
+
+    public function AllPromoter()
+    {
+        $city = Auth::user()->city_id;
+
+        return  $this->model->select('id', DB::raw('CONCAT(first_name," ",last_name) as full_name'))
+            ->where('city_id', '=', $city)
+            ->where('position_id', '=', 1)
+            ->orderBy('full_name')
+            ->pluck('full_name', 'id');
     }
 
 

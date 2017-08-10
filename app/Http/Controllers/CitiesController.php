@@ -22,7 +22,7 @@ class CitiesController extends Controller {
     public function index()
     {
         $cities = $this->cityRepo->All();
-        return view('cities/index', compact('cities'));
+        return view('dashboard/cities/index', compact('cities'));
     }
     public function cityCreate()
     {
@@ -30,7 +30,7 @@ class CitiesController extends Controller {
         $manager = new CityManager($city, Input::all());
         if ($manager->save())
         {
-            return Redirect::route('cities');
+            return Redirect::route('dashboard_cities');
         }
         return Redirect::back()->withInput()->withErrors($manager->getErrors());
     }
@@ -38,7 +38,7 @@ class CitiesController extends Controller {
     public function cityEdit($id)
     {
         $city = $this->cityRepo->edit($id);
-        return view('cities/edit', compact('city'));
+        return view('dashboard/cities/edit', compact('city'));
     }
 
     public function updateCity($id)
@@ -50,7 +50,7 @@ class CitiesController extends Controller {
 
         if ($manager->save())
         {
-            return Redirect::route('cities');
+            return Redirect::route('dashboard_cities');
         }
         return Redirect::back()->withInput()->withErrors($manager->getErrors());
     }
